@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+        <exclusions>
+            <module name="org.apache.commons.logging"/>
+            <module name="org.apache.log4j"/>
+            <module name="org.slf4j"/>
+            <module name="org.slf4j.impl"/>
+            <!--Excluir cuando se tiene una libreria independiente de infinispan -->
+            <module name="org.infinispan" />
+        </exclusions>
+        <dependencies> 
+            <!--Importante incluirlo para la obtencion via jndi
+            <module name="org.infinispan" /> -->
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
