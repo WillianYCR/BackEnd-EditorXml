@@ -1,4 +1,4 @@
-package com.novatronic.das.dao.xml.format;
+package com.novatronic.das.xml.configclient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,28 +8,34 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.novatronic.das.xml.configclient.SixadcClient;
+
 
 /**
  * @author wcahuaya
- *
+ * 
  */
 @XmlRootElement(name = "sixadc-clients")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SixAdcClientXml {
-	
+public class SixadcClients {
+
 	@XmlElement(name = "sixadc-client")
-    private List<SixadcClient> sixadcClient;
-	
-	public SixAdcClientXml() {
+	private List<SixadcClient> sixadcClient;
+
+	public SixadcClients() {
 		sixadcClient = new ArrayList<SixadcClient>();
 	}
-	
-	public void addSixadcClient(SixadcClient sixadcClient) {
-    	this.sixadcClient.add(sixadcClient);
-    }
-	
+
 	public List<SixadcClient> getSixadcClient() {
 		return sixadcClient;
 	}
+
+	public void setSixadcClient(List<SixadcClient> sixadcClient) {
+		this.sixadcClient = sixadcClient;
+	}
+
+	@Override
+	public String toString() {
+		return "SixAdcClients [sixadcClient=" + sixadcClient + "]";
+	}
+
 }

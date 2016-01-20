@@ -5,32 +5,33 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.novatronic.das.dao.MessageFormatDAO;
+import com.novatronic.das.dao.DriverDAO;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.dao.exception.DAOException;
+import com.novatronic.das.xml.config.Driver;
+import com.novatronic.das.xml.config.Drivers;
 import com.novatronic.das.xml.config.SixAdcConfig;
-import com.novatronic.das.xml.config.MessageFormat;
-import com.novatronic.das.xml.config.MessageFormats;
 
 /**
  * @author wcahuaya
  *
  */
-public class MessageFormatXmlDAO implements MessageFormatDAO{
-	private final static Logger log = LoggerFactory.getLogger(MessageFormatXmlDAO.class.getName());
+public class DriverXmlDAO implements DriverDAO{
+	private final static Logger log = LoggerFactory.getLogger(DriverXmlDAO.class.getName());
 	
 	@Override
-	public List<MessageFormat> get(){
+	public List<Driver> get(){
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
+		Drivers tag = null;
 		try {
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
-			tag = sixXml.getMessageFormats();
-			log.debug(tag.getMessageFormats().size() + " [" + tag + "]");
-			return tag.getMessageFormats();
+			
+			tag = sixXml.getDrivers();
+			log.debug("ReadOK: " + tag.getDrivers().size() + " [" + tag + "]");
+			return tag.getDrivers();
 		} catch (Exception e) {
 			log.error("No realizar la consulta", e);
 			throw new DAOException("No realizar la consulta", e);
@@ -42,27 +43,27 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 	}
 
 	@Override
-	public void create(MessageFormat t) {
+	public void create(Driver t) {
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
-		List<MessageFormat> lista = null;
+		Drivers tag = null;
+		List<Driver> lista = null;
 		try {
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
 			
-			tag = sixXml.getMessageFormats();
-			lista = tag.getMessageFormats();
-			for (MessageFormat mf : lista) {
-				if(mf.getMessageFormatId().equals(t.getMessageFormatId())){
+			tag = sixXml.getDrivers();
+			lista = tag.getDrivers();
+			for (Driver driver : lista) {
+				if(driver.getDriverId().equals(t.getDriverId())){
 					throw new DAOException("Identificador ya existe");
 				}
 			}
 			lista.add(t);
 			
-			tag.setMessageFormats(lista);
-			sixXml.setMessageFormats(tag);
+			tag.setDrivers(lista);
+			sixXml.setDrivers(tag);
 			conn.save(sixXml);
 			
 			log.debug("CreateOK: [" + t + "]");
@@ -77,28 +78,28 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 	}
 	
 	@Override
-	public void update(MessageFormat t) {
+	public void update(Driver t) {
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
-		List<MessageFormat> lista = null;
+		Drivers tag = null;
+		List<Driver> lista = null;
 		try {
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
 			
-			tag = sixXml.getMessageFormats();
-			lista = tag.getMessageFormats();
+			tag = sixXml.getDrivers();
+			lista = tag.getDrivers();
 			for (int i = 0; i < lista.size(); i++) {
-				MessageFormat messageFormat = lista.get(i);
-				if(messageFormat.getMessageFormatId().equals(t.getMessageFormatId())){
+				Driver driver = lista.get(i);
+				if(driver.getDriverId().equals(t.getDriverId())){
 					lista.set(i, t);
 					break;
 				}
 			}
-
-			tag.setMessageFormats(lista);
-			sixXml.setMessageFormats(tag);			
+			
+			tag.setDrivers(lista);
+			sixXml.setDrivers(tag);
 			conn.save(sixXml);
 			
 			log.debug("UpdateOK: [" + t + "]");
@@ -116,28 +117,25 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 	public void delete(String s) {
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
-		List<MessageFormat> lista = null;
+		Drivers tag = null;
+		List<Driver> lista = null;
 		try {
-			if(s == null || s.isEmpty())
-				throw new DAOException("Parametro vacio");
-
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
 			
-			tag = sixXml.getMessageFormats();
-			lista = tag.getMessageFormats();
+			tag = sixXml.getDrivers();
+			lista = tag.getDrivers();
 			for (int i = 0; i < lista.size(); i++) {
-				MessageFormat messageFormat = lista.get(i);
-				if(messageFormat.getMessageFormatId().equals(s)){
+				Driver driver = lista.get(i);
+				if(driver.getDriverId().equals(s)){
 					lista.remove(i);
 					break;
 				}
 			}
-
-			tag.setMessageFormats(lista);
-			sixXml.setMessageFormats(tag);	
+			
+			tag.setDrivers(lista);
+			sixXml.setDrivers(tag);
 			conn.save(sixXml);
 			
 			log.debug("DeleteOK: [" + s + "]");
@@ -150,7 +148,5 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 			}
 		}
 	}
-	
-	
 
 }

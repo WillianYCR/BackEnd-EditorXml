@@ -1,4 +1,4 @@
-package com.novatronic.das.controller;
+package com.novatronic.das.test.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -8,17 +8,16 @@ import java.util.Properties;
 
 import org.junit.Test;
 
-import com.novatronic.das.controller.formateo.MessageFormatXmlController;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.dao.factory.XmlDAOFactory;
-import com.novatronic.das.xml.config.MessageFormat;
+import com.novatronic.das.xml.config.Route;
 import com.novatronic.estandares.helper.ResourceHelper;
 
 /**
  * @author wcahuaya
  *
  */
-public class MessageFormatTest {
+public class RouteTest {
 	
 	@Test
 	public void get() {
@@ -26,8 +25,8 @@ public class MessageFormatTest {
 		List lista;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
-    	
-		lista = new MessageFormatXmlController().obtener();
+
+		lista = XmlDAOFactory.getInstance().getRouteDAO().get();
 		assertNotNull(lista);
         assertEquals(2, lista.size());
     }
@@ -38,11 +37,11 @@ public class MessageFormatTest {
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
-		MessageFormat mf = new MessageFormat("OK", "NUEVO REGISTRO", "transformerConfig.xml", "routerConfig.xml", "777777");
-    	new MessageFormatXmlController().insertar(mf);
+    	Route route = new Route("rutaServicio3", "Ruta de prueba PPV CORRECTO", "balancerPPV", "AVAILABLE");
+    	XmlDAOFactory.getInstance().getRouteDAO().create(route);
     	
-    	lista = new MessageFormatXmlController().obtener();
-		assertNotNull(lista);
+    	lista = XmlDAOFactory.getInstance().getRouteDAO().get();
+    	assertNotNull(lista);
         assertEquals(3, lista.size());
     }
 	
@@ -52,11 +51,11 @@ public class MessageFormatTest {
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
-		MessageFormat mf = new MessageFormat("OK", "CORRECCION", "transformerConfig.xml", "routerConfig.xml", "888888");
-    	new MessageFormatXmlController().actualizar(mf);
+    	Route route = new Route("rutaServicio3", "Ruta de prueba PPV CORREGIDO", "balancerPPV", "AVAILABLE");
+    	XmlDAOFactory.getInstance().getRouteDAO().update(route);
     	
-    	lista = new MessageFormatXmlController().obtener();
-		assertNotNull(lista);
+    	lista = XmlDAOFactory.getInstance().getRouteDAO().get();
+    	assertNotNull(lista);
         assertEquals(3, lista.size());
     }
 	
@@ -66,11 +65,11 @@ public class MessageFormatTest {
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
-		String s = "OK";
-    	new MessageFormatXmlController().eliminar(s);
+    	String s = "rutaServicio3";
+    	XmlDAOFactory.getInstance().getRouteDAO().delete(s);
     	
-    	lista = new MessageFormatXmlController().obtener();
-		assertNotNull(lista);
+    	lista = XmlDAOFactory.getInstance().getRouteDAO().get();
+    	assertNotNull(lista);
         assertEquals(2, lista.size());
     }
 }

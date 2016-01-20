@@ -24,24 +24,24 @@ public class Balancers {
 	private String refreshTime;
 
 	@XmlElement(name = "balancer")
-	private List<Balancer> listBalancer;
+	private List<Balancer> balancers;
 
 	public Balancers() {
 	}
 
-	public Balancers(List<Balancer> listBalancer) {
+	public Balancers(List<Balancer> listBalancers) {
 		super();
-		this.listBalancer = listBalancer;
+		this.balancers = balancers;
 	}
 
 	public Balancers(String classManager, String queueLocation,
-			String sleepTime, String refreshTime, List<Balancer> listBalancer) {
+			String sleepTime, String refreshTime, List<Balancer> balancers) {
 		super();
 		this.classManager = classManager;
 		this.queueLocation = queueLocation;
 		this.sleepTime = sleepTime;
 		this.refreshTime = refreshTime;
-		this.listBalancer = listBalancer;
+		this.balancers = balancers;
 	}
 
 	public String getClassManager() {
@@ -76,19 +76,19 @@ public class Balancers {
 		this.refreshTime = refreshTime;
 	}
 
-	public List<Balancer> getListBalancer() {
-		return listBalancer;
+	public List<Balancer> getBalancers() {
+		return balancers;
 	}
 
-	public void setListBalancer(List<Balancer> listBalancer) {
-		this.listBalancer = listBalancer;
+	public void setBalancers(List<Balancer> balancers) {
+		this.balancers = balancers;
 	}
 
 	@Override
 	public String toString() {
 		return "Balancers [classManager=" + classManager + ", queueLocation="
 				+ queueLocation + ", sleepTime=" + sleepTime + ", refreshTime="
-				+ refreshTime + ", listBalancer=" + listBalancer + "]";
+				+ refreshTime + ", balancers=" + balancers + "]";
 	}
 
 }

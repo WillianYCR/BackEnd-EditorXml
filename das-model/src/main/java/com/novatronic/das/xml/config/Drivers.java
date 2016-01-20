@@ -24,15 +24,15 @@ public class Drivers {
 	private String refreshTime;
 
 	@XmlElement(name = "driver")
-	private List<Driver> driver;
+	private List<Driver> drivers;
 
 	public Drivers() {
 
 	}
 
-	public Drivers(List<Driver> driver) {
+	public Drivers(List<Driver> drivers) {
 		super();
-		this.driver = driver;
+		this.drivers = drivers;
 	}
 
 	public Drivers(String classManager, String queueLocation, String sleepTime,
@@ -42,7 +42,7 @@ public class Drivers {
 		this.queueLocation = queueLocation;
 		this.sleepTime = sleepTime;
 		this.refreshTime = refreshTime;
-		this.driver = driver;
+		this.drivers = drivers;
 	}
 
 	public String getClassManager() {
@@ -77,19 +77,19 @@ public class Drivers {
 		this.refreshTime = refreshTime;
 	}
 
-	public List<Driver> getDriver() {
-		return driver;
+	public List<Driver> getDrivers() {
+		return drivers;
 	}
 
-	public void setDriver(List<Driver> driver) {
-		this.driver = driver;
+	public void setDrivers(List<Driver> drivers) {
+		this.drivers = drivers;
 	}
 
 	@Override
 	public String toString() {
 		return "Drivers [classManager=" + classManager + ", queueLocation="
 				+ queueLocation + ", sleepTime=" + sleepTime + ", refreshTime="
-				+ refreshTime + ", driver=" + driver + "]";
+				+ refreshTime + ", drivers=" + drivers + "]";
 	}
 
 }

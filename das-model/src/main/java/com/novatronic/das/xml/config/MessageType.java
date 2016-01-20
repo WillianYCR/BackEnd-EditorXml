@@ -1,7 +1,5 @@
 package com.novatronic.das.xml.config;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,14 +16,14 @@ public class MessageType {
 	@XmlElement(name = "message-type-desc")
 	private String messageTypeDesc;
 	@XmlElement(name = "supported-message-formats")
-	private List<SupportedMessageFormats> supportedMessageFormats;
+	private SupportedMessageFormats supportedMessageFormats;
 
 	public MessageType() {
 
 	}
 
 	public MessageType(String messageTypeId, String messageTypeDesc,
-			List<SupportedMessageFormats> supportedMessageFormats) {
+			SupportedMessageFormats supportedMessageFormats) {
 		super();
 		this.messageTypeId = messageTypeId;
 		this.messageTypeDesc = messageTypeDesc;
@@ -48,12 +46,12 @@ public class MessageType {
 		this.messageTypeDesc = messageTypeDesc;
 	}
 
-	public List<SupportedMessageFormats> getSupportedMessageFormats() {
+	public SupportedMessageFormats getSupportedMessageFormats() {
 		return supportedMessageFormats;
 	}
 
 	public void setSupportedMessageFormats(
-			List<SupportedMessageFormats> supportedMessageFormats) {
+			SupportedMessageFormats supportedMessageFormats) {
 		this.supportedMessageFormats = supportedMessageFormats;
 	}
 

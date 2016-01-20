@@ -24,7 +24,7 @@ public class AdminQueues {
 	private String refreshTime;
 
 	@XmlElement(name = "admin-queue")
-	private List<AdminQueue> adminQueue;
+	private List<AdminQueue> adminQueues;
 
 	public AdminQueues() {
 
@@ -32,17 +32,17 @@ public class AdminQueues {
 
 	public AdminQueues(List<AdminQueue> adminQueue) {
 		super();
-		this.adminQueue = adminQueue;
+		this.adminQueues = adminQueue;
 	}
 
 	public AdminQueues(String classManager, String queueLocation,
-			String sleepTime, String refreshTime, List<AdminQueue> adminQueue) {
+			String sleepTime, String refreshTime, List<AdminQueue> adminQueues) {
 		super();
 		this.classManager = classManager;
 		this.queueLocation = queueLocation;
 		this.sleepTime = sleepTime;
 		this.refreshTime = refreshTime;
-		this.adminQueue = adminQueue;
+		this.adminQueues = adminQueues;
 	}
 
 	public String getClassManager() {
@@ -77,19 +77,19 @@ public class AdminQueues {
 		this.refreshTime = refreshTime;
 	}
 
-	public List<AdminQueue> getAdminQueue() {
-		return adminQueue;
+	public List<AdminQueue> getAdminQueues() {
+		return adminQueues;
 	}
 
-	public void setAdminQueue(List<AdminQueue> adminQueue) {
-		this.adminQueue = adminQueue;
+	public void setAdminQueues(List<AdminQueue> adminQueues) {
+		this.adminQueues = adminQueues;
 	}
 
 	@Override
 	public String toString() {
 		return "AdminQueues [classManager=" + classManager + ", queueLocation="
 				+ queueLocation + ", sleepTime=" + sleepTime + ", refreshTime="
-				+ refreshTime + ", adminQueue=" + adminQueue + "]";
+				+ refreshTime + ", adminQueues=" + adminQueues + "]";
 	}
 
 }

@@ -16,4 +16,14 @@
         <servlet-name>rs</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <description>Configuration Listener</description>
+        <listener-class>com.novatronic.estandares.config.listener.ConfigurationListener</listener-class>
+    </listener>
+    <listener>
+        <description>das Listener</description>
+        <listener-class>com.novatronic.das.service.rs.listener.ConfigListener</listener-class>
+    </listener>
+    
 </web-app>

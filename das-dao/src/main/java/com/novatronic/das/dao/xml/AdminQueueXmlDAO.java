@@ -5,32 +5,33 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.novatronic.das.dao.MessageFormatDAO;
+import com.novatronic.das.dao.AdminQueueDAO;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.dao.exception.DAOException;
+import com.novatronic.das.xml.config.AdminQueue;
+import com.novatronic.das.xml.config.AdminQueues;
 import com.novatronic.das.xml.config.SixAdcConfig;
-import com.novatronic.das.xml.config.MessageFormat;
-import com.novatronic.das.xml.config.MessageFormats;
 
 /**
  * @author wcahuaya
  *
  */
-public class MessageFormatXmlDAO implements MessageFormatDAO{
-	private final static Logger log = LoggerFactory.getLogger(MessageFormatXmlDAO.class.getName());
+public class AdminQueueXmlDAO implements AdminQueueDAO{
+	private final static Logger log = LoggerFactory.getLogger(AdminQueueXmlDAO.class.getName());
 	
 	@Override
-	public List<MessageFormat> get(){
+	public List<AdminQueue> get(){
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
+		AdminQueues tag = null;
 		try {
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
-			tag = sixXml.getMessageFormats();
-			log.debug(tag.getMessageFormats().size() + " [" + tag + "]");
-			return tag.getMessageFormats();
+			
+			tag = sixXml.getAdminQueues();
+			log.debug("ReadOK: " + tag.getAdminQueues().size() + " [" + tag + "]");
+			return tag.getAdminQueues();
 		} catch (Exception e) {
 			log.error("No realizar la consulta", e);
 			throw new DAOException("No realizar la consulta", e);
@@ -42,27 +43,27 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 	}
 
 	@Override
-	public void create(MessageFormat t) {
+	public void create(AdminQueue t) {
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
-		List<MessageFormat> lista = null;
+		AdminQueues tag = null;
+		List<AdminQueue> lista = null;
 		try {
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
 			
-			tag = sixXml.getMessageFormats();
-			lista = tag.getMessageFormats();
-			for (MessageFormat mf : lista) {
-				if(mf.getMessageFormatId().equals(t.getMessageFormatId())){
+			tag = sixXml.getAdminQueues();
+			lista = tag.getAdminQueues();
+			for (AdminQueue adm : lista) {
+				if(adm.getAdminQueueId().equals(t.getAdminQueueId())){
 					throw new DAOException("Identificador ya existe");
 				}
 			}
 			lista.add(t);
 			
-			tag.setMessageFormats(lista);
-			sixXml.setMessageFormats(tag);
+			tag.setAdminQueues(lista);
+			sixXml.setAdminQueues(tag);
 			conn.save(sixXml);
 			
 			log.debug("CreateOK: [" + t + "]");
@@ -77,28 +78,28 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 	}
 	
 	@Override
-	public void update(MessageFormat t) {
+	public void update(AdminQueue t) {
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
-		List<MessageFormat> lista = null;
+		AdminQueues tag = null;
+		List<AdminQueue> lista = null;
 		try {
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
 			
-			tag = sixXml.getMessageFormats();
-			lista = tag.getMessageFormats();
+			tag = sixXml.getAdminQueues();
+			lista = tag.getAdminQueues();
 			for (int i = 0; i < lista.size(); i++) {
-				MessageFormat messageFormat = lista.get(i);
-				if(messageFormat.getMessageFormatId().equals(t.getMessageFormatId())){
+				AdminQueue adminQueue = lista.get(i);
+				if(adminQueue.getAdminQueueId().equals(t.getAdminQueueId())){
 					lista.set(i, t);
 					break;
 				}
 			}
-
-			tag.setMessageFormats(lista);
-			sixXml.setMessageFormats(tag);			
+			
+			tag.setAdminQueues(lista);
+			sixXml.setAdminQueues(tag);
 			conn.save(sixXml);
 			
 			log.debug("UpdateOK: [" + t + "]");
@@ -116,28 +117,25 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 	public void delete(String s) {
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
-		MessageFormats tag = null;
-		List<MessageFormat> lista = null;
+		AdminQueues queues = null;
+		List<AdminQueue> lista = null;
 		try {
-			if(s == null || s.isEmpty())
-				throw new DAOException("Parametro vacio");
-
 			conn = (ConexionXml) SingletonConnectionFactory.getConnection(SingletonConnectionFactory.XML);
 			conn.open(SixAdcConfig.class, Constante.Xml.SIXADC_CONFIG_FILE);
 			sixXml = conn.read(SixAdcConfig.class);
 			
-			tag = sixXml.getMessageFormats();
-			lista = tag.getMessageFormats();
+			queues = sixXml.getAdminQueues();
+			lista = queues.getAdminQueues();
 			for (int i = 0; i < lista.size(); i++) {
-				MessageFormat messageFormat = lista.get(i);
-				if(messageFormat.getMessageFormatId().equals(s)){
+				AdminQueue adminQueue = lista.get(i);
+				if(adminQueue.getAdminQueueId().equals(s)){
 					lista.remove(i);
 					break;
 				}
 			}
-
-			tag.setMessageFormats(lista);
-			sixXml.setMessageFormats(tag);	
+			
+			queues.setAdminQueues(lista);
+			sixXml.setAdminQueues(queues);
 			conn.save(sixXml);
 			
 			log.debug("DeleteOK: [" + s + "]");

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.novatronic.das.service.rs.xml;
+package com.novatronic.das.service.rs.json;
 
 import com.novatronic.das.controller.MessageFormatController;
 import com.novatronic.das.controller.exception.ControllerException;
 import com.novatronic.das.controller.formateo.MessageFormatXmlController;
-import com.novatronic.das.service.rs.MessageFormatJson;
+import com.novatronic.das.service.rs.MessageFormatService;
 import com.novatronic.das.service.rs.exception.ServiceException;
 import com.novatronic.das.util.out.Respuesta;
 import com.novatronic.das.xml.config.MessageFormat;
@@ -18,16 +18,18 @@ import com.novatronic.das.xml.config.MessageFormats;
  * 
  * @author wcahuaya
  */
-public class MessageFormatXmlJson implements MessageFormatJson {
+public class MessageFormatJsonService implements MessageFormatService {
 
-	public MessageFormatXmlJson() {
+	public MessageFormatJsonService() {
 	}
 
 	@Override
 	public MessageFormats obtener() {
+		MessageFormatController c;
+		MessageFormats mfs = null;
 		try {
-			MessageFormatController c = new MessageFormatXmlController();
-			MessageFormats mfs = new MessageFormats();
+			c = new MessageFormatXmlController();
+			mfs = new MessageFormats();
 			mfs.setMessageFormats(c.obtener());
 			return mfs;
 		}catch (ControllerException e) {
@@ -48,18 +50,6 @@ public class MessageFormatXmlJson implements MessageFormatJson {
 			throw new ServiceException(e);
 		}
 		
-	}
-
-	@Override
-	public Respuesta insertarLista(MessageFormats t) {
-		try {
-			MessageFormatController c = new MessageFormatXmlController();
-			return c.insertarLista(t.getMessageFormats());
-		}catch (ControllerException e) {
-			throw new ServiceException(e);
-		}catch (Exception e) {
-			throw new ServiceException(e);
-		}
 	}
 
 	@Override

@@ -28,17 +28,7 @@
         </layout>
     </appender>
     
-    <logger name="com.novatronic.das.service.rs.filter.LoggingFilter" additivity="false">
-        <level value="DEBUG" />
-        <appender-ref ref="DAYFILE_HTTP"/>
-    </logger>
-    
-    <logger name="com.novatronic.das.service.rs.interceptor.LoggingInterceptor" additivity="false">
-        <level value="DEBUG" />
-        <appender-ref ref="DAYFILE_HTTP"/>
-    </logger>
-     
-    <logger name="com.novatronic.das.service" additivity="false">
+    <logger name="com.novatronic.das" additivity="false">
         <level value="TRACE" />
         <appender-ref ref="FILE"/>
     </logger>

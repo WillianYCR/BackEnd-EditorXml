@@ -1,12 +1,17 @@
 package com.novatronic.das.test.dao;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Test;
 
+import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.dao.factory.XmlDAOFactory;
 import com.novatronic.das.xml.config.MessageFormat;
+import com.novatronic.estandares.helper.ResourceHelper;
 
 /**
  * @author wcahuaya
@@ -14,35 +19,57 @@ import com.novatronic.das.xml.config.MessageFormat;
  */
 public class MessageFormatTest {
 	
+	@Test
 	public void get() {
-		XmlDAOFactory.getInstance().getMessageFormatDAO().get();
+		Properties props = null;
+		List lista;
+    	props = ResourceHelper.findAsProperties("config.properties");
+    	SingletonConnectionFactory.init(props);
+
+		lista = XmlDAOFactory.getInstance().getMessageFormatDAO().get();
+		assertNotNull(lista);
+        assertEquals(2, lista.size());
     }
 	
 	public void create(){
-    	MessageFormat mf = new MessageFormat("RERERE", "Tramas ISO", "transformerConfig.xml", "routerConfig.xml", "777777");
+		Properties props = null;
+		List lista;
+    	props = ResourceHelper.findAsProperties("config.properties");
+    	SingletonConnectionFactory.init(props);
     	
+    	MessageFormat mf = new MessageFormat("OK", "NUEVO REGISTRO", "transformerConfig.xml", "routerConfig.xml", "777777");
     	XmlDAOFactory.getInstance().getMessageFormatDAO().create(mf);
+    	
+    	lista = XmlDAOFactory.getInstance().getMessageFormatDAO().get();
+    	assertNotNull(lista);
+        assertEquals(3, lista.size());
     }
 	
-	public void createLista(){
-    	List<MessageFormat> lista;
-    	lista = new ArrayList<MessageFormat>();
-    	lista.add(new MessageFormat("ISOINTST", "Tramas ISO", "transformerConfig.xml", "routerConfig.xml", "ISO8583"));
-    	lista.add(new MessageFormat("UNIINTER", "Tramas Planas", "transformer-canal-interno.xml", "configRuteo-canal-interno.xml", "PLAIN"));
-    	lista.add(new MessageFormat("OSMONTER", "Tramas Oblicuas", "transformer-interno.xml", "configRuteo-canal.xml", "HHHHH"));
-    	
-    	XmlDAOFactory.getInstance().getMessageFormatDAO().createLista(lista);
-    }
-	//@Test
 	public void update(){
-    	MessageFormat mf = new MessageFormat("RERERE", "Trama de Prueba", "transformerConfig.xml", "routerConfig.xml", "888888");
+		Properties props = null;
+		List lista;
+    	props = ResourceHelper.findAsProperties("config.properties");
+    	SingletonConnectionFactory.init(props);
     	
+    	MessageFormat mf = new MessageFormat("OK", "CORRECCION", "transformerConfig.xml", "routerConfig.xml", "888888");
     	XmlDAOFactory.getInstance().getMessageFormatDAO().update(mf);
+    	
+    	lista = XmlDAOFactory.getInstance().getMessageFormatDAO().get();
+    	assertNotNull(lista);
+        assertEquals(3, lista.size());
     }
 	
 	public void delete(){
-    	String s = "RERERE";
+		Properties props = null;
+		List lista;
+    	props = ResourceHelper.findAsProperties("config.properties");
+    	SingletonConnectionFactory.init(props);
     	
+    	String s = "OK";
     	XmlDAOFactory.getInstance().getMessageFormatDAO().delete(s);
+    	
+    	lista = XmlDAOFactory.getInstance().getMessageFormatDAO().get();
+    	assertNotNull(lista);
+        assertEquals(2, lista.size());
     }
 }

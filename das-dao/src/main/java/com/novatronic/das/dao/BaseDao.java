@@ -2,8 +2,6 @@ package com.novatronic.das.dao;
 
 import java.util.List;
 
-import com.novatronic.das.util.out.Respuesta;
-
 /**
  * @author wcahuaya
  *
@@ -14,8 +12,6 @@ public interface BaseDao<T> {
     List<T> get();
 
     void create(T t);
-    
-    void createLista(List<T> t);
 
     void update(T t);
     

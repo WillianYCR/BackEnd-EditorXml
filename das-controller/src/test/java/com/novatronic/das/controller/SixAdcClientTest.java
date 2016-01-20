@@ -1,4 +1,4 @@
-package com.novatronic.das.test.dao;
+package com.novatronic.das.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -9,8 +9,8 @@ import java.util.Properties;
 
 import org.junit.Test;
 
+import com.novatronic.das.controller.formateo.SixAdcClientXmlController;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
-import com.novatronic.das.dao.factory.XmlDAOFactory;
 import com.novatronic.das.xml.configclient.Atributo;
 import com.novatronic.das.xml.configclient.Atributos;
 import com.novatronic.das.xml.configclient.IpAddresses;
@@ -31,7 +31,8 @@ public class SixAdcClientTest {
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
-		lista = XmlDAOFactory.getInstance().getSixAdcClientDAO().get();
+    	lista = new SixAdcClientXmlController().obtener();
+    	
 		assertNotNull(lista);
         assertEquals(169, lista.size());
     }
@@ -62,9 +63,9 @@ public class SixAdcClientTest {
     	sixadcClientProfiles = new SixadcClientProfiles(profileId);
     	
     	sixadcClient = new SixadcClient("adc500", "CONEXION CORRECTA", atributos, ipAddresses, "none100", "none100", "", "true", sixadcClientProfiles);
-		XmlDAOFactory.getInstance().getSixAdcClientDAO().create(sixadcClient);
+    	new SixAdcClientXmlController().insertar(sixadcClient);
     	
-		lista = XmlDAOFactory.getInstance().getSixAdcClientDAO().get();
+    	lista = new SixAdcClientXmlController().obtener();
 		assertNotNull(lista);
         assertEquals(170, lista.size());
     }
@@ -95,9 +96,9 @@ public class SixAdcClientTest {
     	sixadcClientProfiles = new SixadcClientProfiles(profileId);
     	
     	sixadcClient = new SixadcClient("adc500", "CONEXION CORREGIDA", atributos, ipAddresses, "none100", "none100", "", "true", sixadcClientProfiles);
-		XmlDAOFactory.getInstance().getSixAdcClientDAO().update(sixadcClient);
+    	new SixAdcClientXmlController().actualizar(sixadcClient);
     	
-		lista = XmlDAOFactory.getInstance().getSixAdcClientDAO().get();
+		lista = new SixAdcClientXmlController().obtener();
 		assertNotNull(lista);
         assertEquals(170, lista.size());
     }
@@ -109,9 +110,9 @@ public class SixAdcClientTest {
     	SingletonConnectionFactory.init(props);
     	
     	String s = "adc500";
-    	XmlDAOFactory.getInstance().getSixAdcClientDAO().delete(s);
+    	new SixAdcClientXmlController().eliminar(s);
     	
-    	lista = XmlDAOFactory.getInstance().getSixAdcClientDAO().get();
+    	lista = new SixAdcClientXmlController().obtener();
     	assertNotNull(lista);
         assertEquals(169, lista.size());
     }

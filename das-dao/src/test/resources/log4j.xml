@@ -37,10 +37,8 @@
             <param name="ConversionPattern" value="%d{EEE MMM dd HH:mm:ss.SSS yyyy} [%t] %5p %m%n" />
         </layout>
     </appender>
-     
     
-    
-    <logger name="com.novatronic.das.service" additivity="false">
+    <logger name="com.novatronic.das" additivity="false">
         <level value="TRACE" />
         <appender-ref ref="TRAZADO"/>
         <appender-ref ref="CONSOLE" />

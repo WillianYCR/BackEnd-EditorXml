@@ -27,7 +27,8 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.novatronic.das.service.rs.xml.MessageFormatXmlJson.class);
+    	resources.add(com.novatronic.das.service.rs.json.AdminQueueJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.MessageFormatJsonService.class);
         resources.add(com.novatronic.das.service.rs.filter.LoggingFilter.class);
         resources.add(com.novatronic.das.service.rs.filter.ResponseCorsFilter.class);
         resources.add(com.novatronic.das.service.rs.interceptor.LoggingInterceptor.class);

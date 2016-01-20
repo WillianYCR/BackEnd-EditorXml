@@ -15,8 +15,6 @@ public interface BaseController<T> {
 	
 	Respuesta insertar(T t);
 	
-	Respuesta insertarLista(List<T> t);
-	
 	Respuesta actualizar(T t);
 	
 	Respuesta eliminar(String s);

@@ -1,5 +1,7 @@
 package com.novatronic.das.xml.config;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,21 +14,21 @@ import javax.xml.bind.annotation.XmlElement;
 public class SupportedMessageFormats {
 
 	@XmlElement(name = "message-format-id")
-	private String messageFormatId;
+	private List<String> messageFormatId;
 
 	public SupportedMessageFormats() {
 	}
 
-	public SupportedMessageFormats(String messageFormatId) {
+	public SupportedMessageFormats(List<String> messageFormatId) {
 		super();
 		this.messageFormatId = messageFormatId;
 	}
 
-	public String getMessageFormatId() {
+	public List<String> getMessageFormatId() {
 		return messageFormatId;
 	}
 
-	public void setMessageFormatId(String messageFormatId) {
+	public void setMessageFormatId(List<String> messageFormatId) {
 		this.messageFormatId = messageFormatId;
 	}
 

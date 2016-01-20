@@ -14,27 +14,27 @@ import javax.xml.bind.annotation.XmlElement;
 public class Routes {
 
 	@XmlElement(name = "route")
-	private List<Route> listRoute;
+	private List<Route> routes;
 
 	public Routes() {
 	}
 
-	public Routes(List<Route> listRoute) {
+	public Routes(List<Route> routes) {
 		super();
-		this.listRoute = listRoute;
+		this.routes = routes;
 	}
 
-	public List<Route> getListRoute() {
-		return listRoute;
+	public List<Route> getRoutes() {
+		return routes;
 	}
 
-	public void setListRoute(List<Route> listRoute) {
-		this.listRoute = listRoute;
+	public void setRoutes(List<Route> routes) {
+		this.routes = routes;
 	}
 
 	@Override
 	public String toString() {
-		return "Routes [listRoute=" + listRoute + "]";
+		return "Routes [routes=" + routes + "]";
 	}
 
 }
