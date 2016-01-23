@@ -29,6 +29,14 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
     	resources.add(com.novatronic.das.service.rs.json.AdminQueueJsonService.class);
     	resources.add(com.novatronic.das.service.rs.json.MessageFormatJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.BalancerJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.DriverJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.ProfileJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.RouteJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.ServiceNodeJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.ServiceJsonService.class);
+    	resources.add(com.novatronic.das.service.rs.json.SixadcClientJsonService.class);
+    	
         resources.add(com.novatronic.das.service.rs.filter.LoggingFilter.class);
         resources.add(com.novatronic.das.service.rs.filter.ResponseCorsFilter.class);
         resources.add(com.novatronic.das.service.rs.interceptor.LoggingInterceptor.class);

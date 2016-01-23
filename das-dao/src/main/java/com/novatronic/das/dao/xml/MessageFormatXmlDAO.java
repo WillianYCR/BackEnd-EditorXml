@@ -65,7 +65,7 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 			sixXml.setMessageFormats(tag);
 			conn.save(sixXml);
 			
-			log.debug("CreateOK: [" + t + "]");
+			log.debug("Create: [" + t + "]");
 		} catch (Exception e) {
 			log.error("No se pudo insertar el registro", e);
 			throw new DAOException("No se pudo insertar el registro", e);
@@ -101,7 +101,7 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 			sixXml.setMessageFormats(tag);			
 			conn.save(sixXml);
 			
-			log.debug("UpdateOK: [" + t + "]");
+			log.debug("Update: [" + t + "]");
 		} catch (Exception e) {
 			log.error("No se pudo actualizar", e);
 			throw new DAOException("No se pudo actualizar", e);
@@ -140,7 +140,7 @@ public class MessageFormatXmlDAO implements MessageFormatDAO{
 			sixXml.setMessageFormats(tag);	
 			conn.save(sixXml);
 			
-			log.debug("DeleteOK: [" + s + "]");
+			log.debug("Delete: [" + s + "]");
 		} catch (Exception e) {
 			log.error("No se pudo eliminar", e);
 			throw new DAOException("No se pudo eliminar", e);

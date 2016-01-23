@@ -7,6 +7,6 @@ import com.novatronic.das.xml.configclient.SixadcClient;
  * @author wcahuaya
  *
  */
-public interface SixAdcClientDAO extends BaseDao<SixadcClient>{
+public interface SixadcClientDAO extends BaseDao<SixadcClient>{
 	
 }

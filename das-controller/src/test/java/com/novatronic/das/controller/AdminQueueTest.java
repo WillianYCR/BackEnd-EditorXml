@@ -10,9 +10,9 @@ import java.util.Properties;
 import org.junit.Test;
 
 import com.novatronic.das.controller.formateo.AdminQueueXmlController;
-import com.novatronic.das.controller.formateo.MessageFormatXmlController;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.xml.config.AdminQueue;
+import com.novatronic.das.xml.config.AdminQueues;
 import com.novatronic.das.xml.config.MessageType;
 import com.novatronic.das.xml.config.SupportedMessageFormats;
 import com.novatronic.estandares.helper.ResourceHelper;
@@ -26,18 +26,18 @@ public class AdminQueueTest {
 	@Test
 	public void get() {
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
-    	lista = new AdminQueueXmlController().obtener();
-		assertNotNull(lista);
-        assertEquals(5, lista.size());
+    	obj = new AdminQueueXmlController().obtenerObjeto();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(5, obj.getAdminQueues().size());
     }
 	
 	public void create(){
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
@@ -48,14 +48,14 @@ public class AdminQueueTest {
 		AdminQueue aq = new AdminQueue("adminCola6", "10", mt);
 		new AdminQueueXmlController().insertar(aq);
 		
-		lista = new AdminQueueXmlController().obtener();
-		assertNotNull(lista);
-        assertEquals(6, lista.size());
+		obj = new AdminQueueXmlController().obtenerObjeto();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(6, obj.getAdminQueues().size());
     }
 	
 	public void update(){
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
@@ -65,23 +65,23 @@ public class AdminQueueTest {
 		AdminQueue aq = new AdminQueue("adminCola6", "10", mt);
 		new AdminQueueXmlController().actualizar(aq);
 		
-		lista = new AdminQueueXmlController().obtener();
-		assertNotNull(lista);
-        assertEquals(6, lista.size());
+		obj = new AdminQueueXmlController().obtenerObjeto();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(6, obj.getAdminQueues().size());
     }
 	
 	public void delete(){
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
     	String s = "adminCola6";
     	new AdminQueueXmlController().eliminar(s);
     	
-    	lista = new AdminQueueXmlController().obtener();
-		assertNotNull(lista);
-        assertEquals(5, lista.size());
+    	obj = new AdminQueueXmlController().obtenerObjeto();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(5, obj.getAdminQueues().size());
     }
 }
 

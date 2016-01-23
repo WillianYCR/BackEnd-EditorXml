@@ -12,11 +12,17 @@ public interface DAOFactory {
     
     AdminQueueDAO getAdminQueueDAO();
     
-    SixAdcClientDAO getSixAdcClientDAO();
+    SixadcClientDAO getSixAdcClientDAO();
     
     DriverDAO getDriverDAO(); 
     
     BalancerDAO getBalancerDAO();
     
     RouteDAO getRouteDAO();
+    
+    ServiceDAO getServiceDAO();
+    
+    ProfileDAO getProfileDAO();
+    
+    ServiceNodeDAO getServiceNodeDAO();
 }

@@ -24,25 +24,25 @@ public class ServiceNodes {
 	private String refreshTime;
 
 	@XmlElement(name = "service-node")
-	private List<ServiceNode> serviceNode;
+	private List<ServiceNode> serviceNodes;
 
 	public ServiceNodes() {
 
 	}
 
-	public ServiceNodes(List<ServiceNode> serviceNode) {
+	public ServiceNodes(List<ServiceNode> serviceNodes) {
 		super();
-		this.serviceNode = serviceNode;
+		this.serviceNodes = serviceNodes;
 	}
 
 	public ServiceNodes(String classManager, String queueLocation,
-			String sleepTime, String refreshTime, List<ServiceNode> serviceNode) {
+			String sleepTime, String refreshTime, List<ServiceNode> serviceNodes) {
 		super();
 		this.classManager = classManager;
 		this.queueLocation = queueLocation;
 		this.sleepTime = sleepTime;
 		this.refreshTime = refreshTime;
-		this.serviceNode = serviceNode;
+		this.serviceNodes = serviceNodes;
 	}
 
 	public String getClassManager() {
@@ -77,20 +77,20 @@ public class ServiceNodes {
 		this.refreshTime = refreshTime;
 	}
 
-	public List<ServiceNode> getServiceNode() {
-		return serviceNode;
+	public List<ServiceNode> getServiceNodes() {
+		return serviceNodes;
 	}
 
-	public void setServiceNode(List<ServiceNode> serviceNode) {
-		this.serviceNode = serviceNode;
+	public void setServiceNodes(List<ServiceNode> serviceNodes) {
+		this.serviceNodes = serviceNodes;
 	}
 
 	@Override
 	public String toString() {
 		return "ServiceNodes [classManager=" + classManager
 				+ ", queueLocation=" + queueLocation + ", sleepTime="
-				+ sleepTime + ", refreshTime=" + refreshTime + ", serviceNode="
-				+ serviceNode + "]";
+				+ sleepTime + ", refreshTime=" + refreshTime + ", serviceNodes="
+				+ serviceNodes + "]";
 	}
 
 }

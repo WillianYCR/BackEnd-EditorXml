@@ -5,7 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.novatronic.das.dao.SixAdcClientDAO;
+import com.novatronic.das.dao.SixadcClientDAO;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.dao.exception.DAOException;
 import com.novatronic.das.xml.configclient.SixadcClient;
@@ -15,8 +15,8 @@ import com.novatronic.das.xml.configclient.SixadcClients;
  * @author wcahuaya
  *
  */
-public class SixAdcClientXmlDAO implements SixAdcClientDAO{
-	private final static Logger log = LoggerFactory.getLogger(SixAdcClientXmlDAO.class.getName());
+public class SixadcClientXmlDAO implements SixadcClientDAO{
+	private final static Logger log = LoggerFactory.getLogger(SixadcClientXmlDAO.class.getName());
 	
 	@Override
 	public List<SixadcClient> get() {
@@ -28,7 +28,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 			conn.open(SixadcClients.class, Constante.Xml.SIXADC_CLIENT_FILE);
 			sixCli = conn.read(SixadcClients.class);
 			
-			tag = sixCli.getSixadcClient();
+			tag = sixCli.getSixadcClients();
 			log.debug(tag.size() + " [" + tag + "]");
 			return tag;
 		} catch (Exception e) {
@@ -50,7 +50,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 			conn.open(SixadcClients.class, Constante.Xml.SIXADC_CLIENT_FILE);
 			sixCli = conn.read(SixadcClients.class);
 
-			lista = sixCli.getSixadcClient();
+			lista = sixCli.getSixadcClients();
 			for (SixadcClient cli : lista) {
 				if(cli.getSixadcClientId().equals(t.getSixadcClientId())){
 					throw new DAOException("Identificador ya existe");
@@ -58,7 +58,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 			}
 			lista.add(t);
 			
-			sixCli.setSixadcClient(lista);
+			sixCli.setSixadcClients(lista);
 			conn.save(sixCli);
 			
 			log.info("Create: [" + t + "]");
@@ -81,7 +81,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 			conn.open(SixadcClients.class, Constante.Xml.SIXADC_CLIENT_FILE);
 			sixCli = conn.read(SixadcClients.class);
 
-			lista = sixCli.getSixadcClient();
+			lista = sixCli.getSixadcClients();
 			for (int i = 0; i < lista.size(); i++) {
 				SixadcClient cli = lista.get(i);
 				if(cli.getSixadcClientId().equals(t.getSixadcClientId())){
@@ -90,7 +90,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 				}
 			}
 			
-			sixCli.setSixadcClient(lista);
+			sixCli.setSixadcClients(lista);
 			conn.save(sixCli);
 			
 			log.info("Update: [" + t + "]");
@@ -114,7 +114,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 			conn.open(SixadcClients.class, Constante.Xml.SIXADC_CLIENT_FILE);
 			sixCli = conn.read(SixadcClients.class);
 
-			lista = sixCli.getSixadcClient();
+			lista = sixCli.getSixadcClients();
 			for (int i = 0; i < lista.size(); i++) {
 				SixadcClient cli = lista.get(i);
 				if(cli.getSixadcClientId().equals(s)){
@@ -123,7 +123,7 @@ public class SixAdcClientXmlDAO implements SixAdcClientDAO{
 				}
 			}
 			
-			sixCli.setSixadcClient(lista);
+			sixCli.setSixadcClients(lista);
 			conn.save(sixCli);
 			
 			log.debug("DeleteOK: [" + s + "]");

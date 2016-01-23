@@ -19,23 +19,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SixadcClients {
 
 	@XmlElement(name = "sixadc-client")
-	private List<SixadcClient> sixadcClient;
+	private List<SixadcClient> sixadcClients;
 
 	public SixadcClients() {
-		sixadcClient = new ArrayList<SixadcClient>();
+		sixadcClients = new ArrayList<SixadcClient>();
 	}
 
-	public List<SixadcClient> getSixadcClient() {
-		return sixadcClient;
+	public List<SixadcClient> getSixadcClients() {
+		return sixadcClients;
 	}
 
-	public void setSixadcClient(List<SixadcClient> sixadcClient) {
-		this.sixadcClient = sixadcClient;
+	public void setSixadcClients(List<SixadcClient> sixadcClients) {
+		this.sixadcClients = sixadcClients;
 	}
 
 	@Override
 	public String toString() {
-		return "SixAdcClients [sixadcClient=" + sixadcClient + "]";
+		return "SixadcClients [sixadcClients=" + sixadcClients + "]";
 	}
 
 }

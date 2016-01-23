@@ -30,7 +30,7 @@ public class ConfigListener implements ServletContextListener {
         try {
             
             props = ResourceHelper.findAsProperties(CONFIG_FILE);
-            log.info(props.getProperty("sixadc.path" + "|" + props.getProperty("sixadc.config.file")));
+            log.info("Properties : " + props);
             SingletonConnectionFactory.init(props);
             
             log.info("Proceso de inicio del Servicio realizado correctamente");

@@ -27,9 +27,7 @@ public class AdminQueueJsonService implements AdminQueueService {
 	public AdminQueues obtener() {
 		try {
 			AdminQueueController c = new AdminQueueXmlController();
-			AdminQueues mfs = new AdminQueues();
-			mfs.setAdminQueues(c.obtener());
-			return mfs;
+			return c.obtenerObjeto();
 		}catch (ControllerException e) {
 			throw new ServiceException(e);
 		}catch (Exception e) {

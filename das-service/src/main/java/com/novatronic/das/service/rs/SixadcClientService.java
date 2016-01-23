@@ -15,8 +15,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.novatronic.das.util.out.Respuesta;
-import com.novatronic.das.xml.config.MessageFormat;
-import com.novatronic.das.xml.config.MessageFormats;
+import com.novatronic.das.xml.configclient.SixadcClient;
+import com.novatronic.das.xml.configclient.SixadcClients;
 
 /**
  *
@@ -24,21 +24,17 @@ import com.novatronic.das.xml.config.MessageFormats;
  */
 @Consumes("application/json")
 @Produces("application/json")
-@Path("MessageFormat")
-public interface MessageFormatJson {
-	//http://localhost:8080/ResDAS/MessageFormat
+@Path("SixadcClient")
+public interface SixadcClientService {
+	//http://localhost:8080/ResDAS/SixAdcClient
     @GET
-    MessageFormats obtener();
+    SixadcClients obtener();
 
     @POST 
-    Respuesta insertar(MessageFormat messageFormat);
-    
-    @POST
-    @Path("/lista")
-    Respuesta insertarLista(MessageFormats messageFormats);
+    Respuesta insertar(SixadcClient sixadcClient);
     
     @PUT
-    Respuesta actualizar(MessageFormat messageFormat);
+    Respuesta actualizar(SixadcClient sixadcClient);
     
     @DELETE
     @Path("/{id}")

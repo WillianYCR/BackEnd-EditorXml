@@ -21,6 +21,13 @@ public class AdminQueueXmlDAO implements AdminQueueDAO{
 	
 	@Override
 	public List<AdminQueue> get(){
+		// No aplica
+		return null;
+	}
+	
+	@Override
+	public AdminQueues getObj() {
+		
 		ConexionXml conn = null;
 		SixAdcConfig sixXml = null;
 		AdminQueues tag = null;
@@ -30,8 +37,8 @@ public class AdminQueueXmlDAO implements AdminQueueDAO{
 			sixXml = conn.read(SixAdcConfig.class);
 			
 			tag = sixXml.getAdminQueues();
-			log.debug("ReadOK: " + tag.getAdminQueues().size() + " [" + tag + "]");
-			return tag.getAdminQueues();
+			log.debug("Read: " + tag.getAdminQueues().size() + " [" + tag + "]");
+			return tag;
 		} catch (Exception e) {
 			log.error("No realizar la consulta", e);
 			throw new DAOException("No realizar la consulta", e);
@@ -66,7 +73,7 @@ public class AdminQueueXmlDAO implements AdminQueueDAO{
 			sixXml.setAdminQueues(tag);
 			conn.save(sixXml);
 			
-			log.debug("CreateOK: [" + t + "]");
+			log.debug("Create: [" + t + "]");
 		} catch (Exception e) {
 			log.error("No se pudo insertar el registro", e);
 			throw new DAOException("No se pudo insertar el registro", e);
@@ -102,7 +109,7 @@ public class AdminQueueXmlDAO implements AdminQueueDAO{
 			sixXml.setAdminQueues(tag);
 			conn.save(sixXml);
 			
-			log.debug("UpdateOK: [" + t + "]");
+			log.debug("Update: [" + t + "]");
 		} catch (Exception e) {
 			log.error("No se pudo actualizar", e);
 			throw new DAOException("No se pudo actualizar", e);
@@ -138,7 +145,7 @@ public class AdminQueueXmlDAO implements AdminQueueDAO{
 			sixXml.setAdminQueues(queues);
 			conn.save(sixXml);
 			
-			log.debug("DeleteOK: [" + s + "]");
+			log.debug("Delete: [" + s + "]");
 		} catch (Exception e) {
 			log.error("No se pudo eliminar", e);
 			throw new DAOException("No se pudo eliminar", e);
@@ -148,7 +155,5 @@ public class AdminQueueXmlDAO implements AdminQueueDAO{
 			}
 		}
 	}
-	
-	
 
 }

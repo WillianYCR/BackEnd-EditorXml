@@ -28,6 +28,15 @@ public class SixAdcConfig {
 	
 	@XmlElement(name = "routes")
 	private Routes routes;
+	
+	@XmlElement(name = "services")
+	private Services services;
+	
+	@XmlElement(name = "profiles")
+	private Profiles profiles;
+	
+	@XmlElement(name = "service-nodes")
+	private ServiceNodes serviceNodes;
 
 	public SixAdcConfig() {
 		messageFormats = new MessageFormats();
@@ -35,6 +44,9 @@ public class SixAdcConfig {
 		drivers = new Drivers();
 		balancers = new Balancers();
 		routes = new Routes();
+		services = new Services();
+		profiles = new Profiles();
+		serviceNodes = new ServiceNodes();
 	}
 
 	public void setMessageFormats(MessageFormats messageFormats) {
@@ -76,12 +88,38 @@ public class SixAdcConfig {
 	public void setRoutes(Routes routes) {
 		this.routes = routes;
 	}
+	
+	public Services getServices() {
+		return services;
+	}
+
+	public void setServices(Services services) {
+		this.services = services;
+	}
+
+	public Profiles getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(Profiles profiles) {
+		this.profiles = profiles;
+	}
+
+	public ServiceNodes getServiceNodes() {
+		return serviceNodes;
+	}
+
+	public void setServiceNodes(ServiceNodes serviceNodes) {
+		this.serviceNodes = serviceNodes;
+	}
 
 	@Override
 	public String toString() {
 		return "SixAdcConfig [messageFormats=" + messageFormats
 				+ ", adminQueues=" + adminQueues + ", drivers=" + drivers
-				+ ", balancers=" + balancers + ", routes=" + routes + "]";
+				+ ", balancers=" + balancers + ", routes=" + routes
+				+ ", services=" + services + ", profiles=" + profiles
+				+ ", serviceNodes=" + serviceNodes + "]";
 	}
 
 }

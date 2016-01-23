@@ -1,6 +1,7 @@
 package com.novatronic.das.controller;
 
 import com.novatronic.das.xml.config.AdminQueue;
+import com.novatronic.das.xml.config.AdminQueues;
 
 /**
  * @author wcahuaya
@@ -8,4 +9,5 @@ import com.novatronic.das.xml.config.AdminQueue;
  */
 public interface AdminQueueController extends BaseController<AdminQueue>{
 	
+	AdminQueues obtenerObjeto();
 }

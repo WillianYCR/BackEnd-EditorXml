@@ -14,28 +14,28 @@ import javax.xml.bind.annotation.XmlElement;
 public class Services {
 
 	@XmlElement(name = "service")
-	private List<Service> service;
+	private List<Service> services;
 
 	public Services() {
 
 	}
 
-	public Services(List<Service> service) {
+	public Services(List<Service> services) {
 		super();
-		this.service = service;
+		this.services = services;
 	}
 
-	public List<Service> getService() {
-		return service;
+	public List<Service> getServices() {
+		return services;
 	}
 
-	public void setService(List<Service> service) {
-		this.service = service;
+	public void setServices(List<Service> services) {
+		this.services = services;
 	}
 
 	@Override
 	public String toString() {
-		return "Services [service=" + service + "]";
+		return "Services [services=" + services + "]";
 	}
 
 }

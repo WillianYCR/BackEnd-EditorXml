@@ -41,7 +41,7 @@ public class MessageFormatXmlController implements MessageFormatController{
 		try { 
 			XmlDAOFactory.getInstance().getMessageFormatDAO().create(t);
 			log.debug("Insert: [" + t + "]");
-			return new Respuesta("00", "Se realiazo la insercion satisfactoriamente");
+			return new Respuesta("00", "La insercion se realizo satisfactoriamente");
 		} catch (DAOException e) {
 			log.error("No se realizo la insersion", e);
 			throw new ControllerException("No se realizo la insersion", e);
@@ -56,7 +56,7 @@ public class MessageFormatXmlController implements MessageFormatController{
 		try { 
 			XmlDAOFactory.getInstance().getMessageFormatDAO().update(t);
 			log.debug("Update: [" + t + "]");
-			return new Respuesta("00", "Se realiazo la actualizacion satisfactoriamente");
+			return new Respuesta("00", "La actualizacion se realizo satisfactoriamente");
 		} catch (DAOException e) {
 			log.error("No se realizo la actualizacion", e);
 			throw new ControllerException("No se realizo la actualizacion", e);
@@ -71,7 +71,7 @@ public class MessageFormatXmlController implements MessageFormatController{
 		try { 
 			XmlDAOFactory.getInstance().getMessageFormatDAO().delete(s);
 			log.debug("Delete: [" + s + "]");
-			return new Respuesta("00", "Se realiazo la eliminacion satisfactoriamente");
+			return new Respuesta("00", "La eliminacion se realizo satisfactoriamente");
 		} catch (DAOException e) {
 			log.error("No se realizo la eliminacion", e);
 			throw new ControllerException("No se realizo la eliminacion", e);

@@ -29,7 +29,7 @@ public class Balancers {
 	public Balancers() {
 	}
 
-	public Balancers(List<Balancer> listBalancers) {
+	public Balancers(List<Balancer> balancers) {
 		super();
 		this.balancers = balancers;
 	}

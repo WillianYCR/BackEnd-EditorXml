@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.dao.factory.XmlDAOFactory;
 import com.novatronic.das.xml.config.AdminQueue;
+import com.novatronic.das.xml.config.AdminQueues;
 import com.novatronic.das.xml.config.MessageType;
 import com.novatronic.das.xml.config.SupportedMessageFormats;
 import com.novatronic.estandares.helper.ResourceHelper;
@@ -25,18 +26,18 @@ public class AdminQueueTest {
 	@Test
 	public void get() {
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
 
-		lista = XmlDAOFactory.getInstance().getAdminQueueDAO().get();
-		assertNotNull(lista);
-        assertEquals(5, lista.size());
+    	obj = XmlDAOFactory.getInstance().getAdminQueueDAO().getObj();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(5, obj.getAdminQueues().size());
     }
 	
 	public void create(){
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
@@ -47,14 +48,14 @@ public class AdminQueueTest {
 		AdminQueue aq = new AdminQueue("adminCola6", "10", mt);
     	XmlDAOFactory.getInstance().getAdminQueueDAO().create(aq);
     	
-    	lista = XmlDAOFactory.getInstance().getAdminQueueDAO().get();
-		assertNotNull(lista);
-        assertEquals(6, lista.size());
+    	obj = XmlDAOFactory.getInstance().getAdminQueueDAO().getObj();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(6, obj.getAdminQueues().size());
     }
 	
 	public void update(){
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
@@ -64,22 +65,22 @@ public class AdminQueueTest {
 		AdminQueue aq = new AdminQueue("adminCola6", "10", mt);
     	XmlDAOFactory.getInstance().getAdminQueueDAO().update(aq);
     	
-    	lista = XmlDAOFactory.getInstance().getAdminQueueDAO().get();
-		assertNotNull(lista);
-        assertEquals(6, lista.size());
+    	obj = XmlDAOFactory.getInstance().getAdminQueueDAO().getObj();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(6, obj.getAdminQueues().size());
     }
 	
 	public void delete(){
 		Properties props = null;
-		List lista;
+		AdminQueues obj;
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
     	String s = "adminCola6";
     	XmlDAOFactory.getInstance().getAdminQueueDAO().delete(s);
     	
-    	lista = XmlDAOFactory.getInstance().getAdminQueueDAO().get();
-		assertNotNull(lista);
-        assertEquals(5, lista.size());
+    	obj = XmlDAOFactory.getInstance().getAdminQueueDAO().getObj();
+		assertNotNull(obj.getAdminQueues());
+        assertEquals(5, obj.getAdminQueues().size());
     }
 }

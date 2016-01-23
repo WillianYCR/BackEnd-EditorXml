@@ -30,7 +30,7 @@ public class DriverXmlDAO implements DriverDAO{
 			sixXml = conn.read(SixAdcConfig.class);
 			
 			tag = sixXml.getDrivers();
-			log.debug("ReadOK: " + tag.getDrivers().size() + " [" + tag + "]");
+			log.debug("Read: " + tag.getDrivers().size() + " [" + tag + "]");
 			return tag.getDrivers();
 		} catch (Exception e) {
 			log.error("No realizar la consulta", e);
@@ -102,7 +102,7 @@ public class DriverXmlDAO implements DriverDAO{
 			sixXml.setDrivers(tag);
 			conn.save(sixXml);
 			
-			log.debug("UpdateOK: [" + t + "]");
+			log.debug("Update: [" + t + "]");
 		} catch (Exception e) {
 			log.error("No se pudo actualizar", e);
 			throw new DAOException("No se pudo actualizar", e);
@@ -138,7 +138,7 @@ public class DriverXmlDAO implements DriverDAO{
 			sixXml.setDrivers(tag);
 			conn.save(sixXml);
 			
-			log.debug("DeleteOK: [" + s + "]");
+			log.debug("Delete: [" + s + "]");
 		} catch (Exception e) {
 			log.error("No se pudo eliminar", e);
 			throw new DAOException("No se pudo eliminar", e);

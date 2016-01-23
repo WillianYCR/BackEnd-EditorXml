@@ -6,6 +6,6 @@ import com.novatronic.das.xml.configclient.SixadcClient;
  * @author wcahuaya
  *
  */
-public interface SixAdcClientController extends BaseController<SixadcClient>{
+public interface SixadcClientController extends BaseController<SixadcClient>{
 
 }

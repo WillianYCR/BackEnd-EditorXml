@@ -22,7 +22,7 @@ import com.novatronic.estandares.helper.ResourceHelper;
  * @author wcahuaya
  *
  */
-public class SixAdcClientTest {
+public class SixadcClientTest {
 	
 	@Test
 	public void get() {

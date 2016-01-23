@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import org.junit.Test;
 
-import com.novatronic.das.controller.formateo.SixAdcClientXmlController;
+import com.novatronic.das.controller.formateo.SixadcClientXmlController;
 import com.novatronic.das.dao.conn.SingletonConnectionFactory;
 import com.novatronic.das.xml.configclient.Atributo;
 import com.novatronic.das.xml.configclient.Atributos;
@@ -22,7 +22,7 @@ import com.novatronic.estandares.helper.ResourceHelper;
  * @author wcahuaya
  *
  */
-public class SixAdcClientTest {
+public class SixadcClientTest {
 	
 	@Test
 	public void get() {
@@ -31,7 +31,7 @@ public class SixAdcClientTest {
     	props = ResourceHelper.findAsProperties("config.properties");
     	SingletonConnectionFactory.init(props);
     	
-    	lista = new SixAdcClientXmlController().obtener();
+    	lista = new SixadcClientXmlController().obtener();
     	
 		assertNotNull(lista);
         assertEquals(169, lista.size());
@@ -63,9 +63,9 @@ public class SixAdcClientTest {
     	sixadcClientProfiles = new SixadcClientProfiles(profileId);
     	
     	sixadcClient = new SixadcClient("adc500", "CONEXION CORRECTA", atributos, ipAddresses, "none100", "none100", "", "true", sixadcClientProfiles);
-    	new SixAdcClientXmlController().insertar(sixadcClient);
+    	new SixadcClientXmlController().insertar(sixadcClient);
     	
-    	lista = new SixAdcClientXmlController().obtener();
+    	lista = new SixadcClientXmlController().obtener();
 		assertNotNull(lista);
         assertEquals(170, lista.size());
     }
@@ -96,9 +96,9 @@ public class SixAdcClientTest {
     	sixadcClientProfiles = new SixadcClientProfiles(profileId);
     	
     	sixadcClient = new SixadcClient("adc500", "CONEXION CORREGIDA", atributos, ipAddresses, "none100", "none100", "", "true", sixadcClientProfiles);
-    	new SixAdcClientXmlController().actualizar(sixadcClient);
+    	new SixadcClientXmlController().actualizar(sixadcClient);
     	
-		lista = new SixAdcClientXmlController().obtener();
+		lista = new SixadcClientXmlController().obtener();
 		assertNotNull(lista);
         assertEquals(170, lista.size());
     }
@@ -110,9 +110,9 @@ public class SixAdcClientTest {
     	SingletonConnectionFactory.init(props);
     	
     	String s = "adc500";
-    	new SixAdcClientXmlController().eliminar(s);
+    	new SixadcClientXmlController().eliminar(s);
     	
-    	lista = new SixAdcClientXmlController().obtener();
+    	lista = new SixadcClientXmlController().obtener();
     	assertNotNull(lista);
         assertEquals(169, lista.size());
     }

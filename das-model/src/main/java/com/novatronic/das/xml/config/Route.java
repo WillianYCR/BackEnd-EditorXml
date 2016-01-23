@@ -23,6 +23,11 @@ public class Route {
 	public Route() {
 	}
 
+	public Route(String routeId) {
+		super();
+		this.routeId = routeId;
+	}
+	
 	public Route(String routeId, String routeDesc, String balancerId,
 			String status) {
 		super();

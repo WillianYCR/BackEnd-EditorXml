@@ -36,7 +36,7 @@ public class Drivers {
 	}
 
 	public Drivers(String classManager, String queueLocation, String sleepTime,
-			String refreshTime, List<Driver> driver) {
+			String refreshTime, List<Driver> drivers) {
 		super();
 		this.classManager = classManager;
 		this.queueLocation = queueLocation;

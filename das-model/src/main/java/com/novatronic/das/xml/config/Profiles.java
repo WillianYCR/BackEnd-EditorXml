@@ -14,27 +14,27 @@ import javax.xml.bind.annotation.XmlElement;
 public class Profiles {
 
 	@XmlElement(name = "profile")
-	private List<Profile> profile;
+	private List<Profile> profiles;
 
 	public Profiles() {
 
 	}
 
-	public Profiles(List<Profile> profile) {
+	public Profiles(List<Profile> profiles) {
 		super();
-		this.profile = profile;
+		this.profiles = profiles;
 	}
 
-	public List<Profile> getProfile() {
-		return profile;
+	public List<Profile> getProfiles() {
+		return profiles;
 	}
 
-	public void setProfile(List<Profile> profile) {
-		this.profile = profile;
+	public void setProfiles(List<Profile> profiles) {
+		this.profiles = profiles;
 	}
 
 	@Override
 	public String toString() {
-		return "Profiles [profile=" + profile + "]";
+		return "Profiles [profiles=" + profiles + "]";
 	}
 }

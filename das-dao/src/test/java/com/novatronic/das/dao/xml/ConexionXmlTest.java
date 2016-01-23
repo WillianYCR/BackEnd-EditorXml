@@ -82,8 +82,8 @@ public class ConexionXmlTest {
 
             adcClient = conn.read(SixadcClients.class);
             
-            assertNotNull(adcClient.getSixadcClient());
-            assertEquals(169, adcClient.getSixadcClient().size());
+            assertNotNull(adcClient.getSixadcClients());
+            assertEquals(169, adcClient.getSixadcClients().size());
             
         } catch (Exception e) {
             e.printStackTrace();
